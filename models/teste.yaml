@@ -1,0 +1,9 @@
+title: teste
+x-stoplight:
+  id: p14k7126tapil
+type: object
+properties:
+  id:
+    type: string
+    x-stoplight:
+      id: 47hkp6wf7h6do

@@ -1,0 +1,310 @@
+{
+  "openapi": "3.0.0",
+  "x-stoplight": {
+    "id": "adyumz6gkrqrk"
+  },
+  "info": {
+    "version": "1.0.0",
+    "title": "Swagger Petstore",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://petstore.swagger.io/v1"
+    }
+  ],
+  "paths": {
+    "/pets": {
+      "get": {
+        "summary": "List all pets",
+        "operationId": "listPets",
+        "tags": [
+          "pets"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A paged array of pets",
+            "headers": {
+              "x-next": {
+                "description": "A link to the next page of responses",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pets"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Shared Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {
+                  "Example 1": {
+                    "value": {}
+                  },
+                  "Example 2": {
+                    "$ref": "#/components/examples/example"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "f8p4qpjgfrrf6"
+        },
+        "requestBody": {
+          "description": "",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a pet",
+        "operationId": "createPets",
+        "tags": [
+          "pets"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pet"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Null response"
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "51mlbsqehoamu"
+        },
+        "parameters": []
+      },
+      "parameters": []
+    },
+    "/pets/{petId}": {
+      "get": {
+        "summary": "Info for a specific pet",
+        "operationId": "showPetById",
+        "tags": [
+          "pets"
+        ],
+        "parameters": [
+          {
+            "name": "petId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the pet to retrieve",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expected response to a valid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pet"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "6wp2j5171hxgc"
+        }
+      }
+    },
+    "/teste": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {},
+        "operationId": "get-teste",
+        "x-stoplight": {
+          "id": "cobb7jd3o5uor"
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/teste"
+          }
+        ]
+      },
+      "post": {
+        "summary": "teste",
+        "operationId": "post-teste",
+        "responses": {
+          "200": {
+            "description": "Shared Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-stoplight": {
+          "id": "ahoohzbgo1ddx"
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Pet": {
+        "type": "string",
+        "x-stoplight": {
+          "id": "2enpr63qrsem2"
+        },
+        "x-extension-1": null,
+        "default": "teste",
+        "example": "teste"
+      },
+      "Pets": {
+        "type": "array",
+        "maxItems": 100,
+        "items": {
+          "$ref": "#/components/schemas/Pet"
+        },
+        "x-stoplight": {
+          "id": "gyg92unvqg6gn"
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "x-stoplight": {
+          "id": "j5c89ldpixwef"
+        }
+      },
+      "Teste": {
+        "title": "Teste",
+        "x-stoplight": {
+          "id": "tiaku9eqjw56j"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "x-stoplight": {
+              "id": "692expeeerb25"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "teste-response": {
+        "description": ""
+      }
+    },
+    "parameters": {
+      "teste": {
+        "name": "teste",
+        "in": "query",
+        "required": false,
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "examples": {
+      "example": {
+        "value": {
+          "description": "Example shared example",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id"
+          ]
+        }
+      }
+    }
+  }
+}
